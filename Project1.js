@@ -57205,11 +57205,9 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
   rtl.createClass(this,"TForm1",pas["WEBLib.Forms"].TForm,function () {
     this.$init = function () {
       pas["WEBLib.Forms"].TForm.$init.call(this);
-      this.WebPanel1 = null;
       this.ChartArray = [];
     };
     this.$final = function () {
-      this.WebPanel1 = undefined;
       this.ChartArray = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
@@ -57500,13 +57498,11 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
-      this.WebPanel1 = pas["WEBLib.ExtCtrls"].TPanel.$create("Create$1",[this]);
-      this.WebPanel1.BeforeLoadDFMValues();
       try {
         this.SetName("Form1");
         this.SetWidth(1007);
         this.SetHeight(1000);
-        this.SetCaption("pan");
+        this.SetCaption("Graficas, scroll para visualizar");
         this.SetCSSLibrary(pas["WEBLib.Controls"].TCSSLibrary.cssBootstrap);
         this.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
         this.FFont.FCharset = 1;
@@ -57516,32 +57512,12 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.FFont.SetStyle({});
         this.SetParentFont(false);
         this.SetEvent(this,"OnCreate","WebFormCreate");
-        this.WebPanel1.SetParentComponent(this);
-        this.WebPanel1.SetName("WebPanel1");
-        this.WebPanel1.SetLeft(816);
-        this.WebPanel1.SetTop(0);
-        this.WebPanel1.SetWidth(191);
-        this.WebPanel1.SetHeight(1000);
-        this.WebPanel1.SetElementClassName("card");
-        this.WebPanel1.SetAlign(pas["WEBLib.Controls"].TAlign.alRight);
-        this.WebPanel1.SetCaption("Scroll para visualizar");
-        this.WebPanel1.FElementBodyClassName = "card-body";
-        this.WebPanel1.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
-        this.WebPanel1.FFont.FCharset = 1;
-        this.WebPanel1.FFont.SetColor(65793);
-        this.WebPanel1.FFont.SetHeight(-13);
-        this.WebPanel1.FFont.SetName("Tahoma");
-        this.WebPanel1.FFont.SetStyle(rtl.createSet(pas["WEBLib.Graphics"].TFontStyle.fsBold));
-        this.WebPanel1.SetParentFont(false);
-        this.WebPanel1.SetTabOrder(0);
       } finally {
-        this.WebPanel1.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
     rtl.addIntf(this,pas.System.IUnknown);
     var $r = this.$rtti;
-    $r.addField("WebPanel1",pas["WEBLib.ExtCtrls"].$rtti["TPanel"]);
     $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("CreateChart",1,[["ChartType",rtl.string],["Title",rtl.string],["Top",rtl.longint],["Left",rtl.longint],["Width",rtl.longint],["Height",rtl.longint],["ChartLabels",rtl.string,8]],rtl.longint);
     $r.addMethod("AddChartData",0,[["ChartNum",rtl.longint],["DataLabel",rtl.string],["DataColor",rtl.string],["Data",rtl.longint,8]]);
