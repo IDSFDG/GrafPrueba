@@ -57205,9 +57205,11 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
   rtl.createClass(this,"TForm1",pas["WEBLib.Forms"].TForm,function () {
     this.$init = function () {
       pas["WEBLib.Forms"].TForm.$init.call(this);
+      this.WebPanel1 = null;
       this.ChartArray = [];
     };
     this.$final = function () {
+      this.WebPanel1 = undefined;
       this.ChartArray = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
@@ -57219,27 +57221,39 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       var ChartCSV = null;
       var i = 0;
       var ChartRef = undefined;
-      ChartNum = this.CreateChart("bar","Grafica de Barra #1",10,10,500,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("bar","Grafica de Barra #1",10,10,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"Series A",'["rgba(192,0,192,0.8)"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"Series B",'["rgba(0,192,192,0.8)"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"Series C",'["rgba(192,192,0,0.8)"]',[7,5,3,0,9,8,6]);
-      ChartNum = this.CreateChart("bar","Grafica de Barra #2",10,520,500,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("bar","Grafica de Barra #2",10,520,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"A",'["red"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"B",'["green"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"C",'["blue"]',[7,5,3,0,9,8,6]);
       this.AddChartData(ChartNum,"D",'["cyan"]',[5,3,0,9,8,6,7]);
       this.AddChartData(ChartNum,"E",'["purple"]',[3,0,9,8,6,7,5]);
-      ChartNum = this.CreateChart("line","Grafica de Linea #1",320,10,500,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("line","Grafica de Linea #1",320,10,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"A",'["#f77"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"B",'["#7f7"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"C",'["#77f"]',[7,5,3,0,9,8,6]);
       ChartCSV = pas.Classes.TStringList.$create("Create$1");
       ChartCSV.LoadFromFile("heartdata.csv");
       i = 0;
-      ChartNum = this.CreateChart("pie","Grafica de Pie #1",640,10,500,300,["Activity","","Steps","","Move",""]);
+      ChartNum = this.CreateChart("pie","Grafica de Pie #1",640,10,400,300,["Actividad","","Pasos","","Movimiento",""]);
       this.AddChartData(ChartNum,"A",'["rgba(255,128,128,1)","rgba(255,255,255,0.9)"]',[450,100]);
       this.AddChartData(ChartNum,"S",'["rgba(128,128,255,1)","rgba(255,255,255,0.9)"]',[9000,1000]);
       this.AddChartData(ChartNum,"M",'["rgba(128,255,128,1)","rgba(255,255,255,0.9)"]',[20,10]);
+      ChartRef = this.ChartArray[ChartNum];
+      ChartRef.options.scales.x.display = false;
+        ChartRef.options.scales.y.display = false;
+        ChartRef.options.plugins.legend.display = false;
+      //  ChartRef.data.datasets[0].borderColor = '#000';
+      //  ChartRef.data.datasets[1].borderColor = '#000';
+      //  ChartRef.data.datasets[2].borderColor = '#000';
+        ChartRef.update();
+      ChartNum = this.CreateChart("pie","Grafica de Pie #2",640,520,400,300,["Actividad","","Pasos","","Movimiento",""]);
+      this.AddChartData(ChartNum,"A",'["rgba(36,108,244,1)","rgba(125,155,100,0.9)"]',[450,100]);
+      this.AddChartData(ChartNum,"S",'["rgba(255,99,71,1)","rgba(140,120,90,0.9)"]',[9000,1000]);
+      this.AddChartData(ChartNum,"M",'["rgba(128,255,128,1)","rgba(100,100,100,0.9)"]',[20,10]);
       ChartRef = this.ChartArray[ChartNum];
       ChartRef.options.scales.x.display = false;
         ChartRef.options.scales.y.display = false;
@@ -57387,7 +57401,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       DivChart.FHTML.SetTextStr('<canvas id="' + ChartName + '" width=100% height=100%></canvas>');
       Top = 320;
       Left = 520;
-      Width = 500;
+      Width = 400;
       Height = 300;
       DivChart.SetTop(Top);
       DivChart.SetLeft(Left);
@@ -57486,10 +57500,13 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
+      this.WebPanel1 = pas["WEBLib.ExtCtrls"].TPanel.$create("Create$1",[this]);
+      this.WebPanel1.BeforeLoadDFMValues();
       try {
         this.SetName("Form1");
         this.SetWidth(1007);
         this.SetHeight(1000);
+        this.SetCaption("pan");
         this.SetCSSLibrary(pas["WEBLib.Controls"].TCSSLibrary.cssBootstrap);
         this.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
         this.FFont.FCharset = 1;
@@ -57499,12 +57516,32 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
         this.FFont.SetStyle({});
         this.SetParentFont(false);
         this.SetEvent(this,"OnCreate","WebFormCreate");
+        this.WebPanel1.SetParentComponent(this);
+        this.WebPanel1.SetName("WebPanel1");
+        this.WebPanel1.SetLeft(816);
+        this.WebPanel1.SetTop(0);
+        this.WebPanel1.SetWidth(191);
+        this.WebPanel1.SetHeight(1000);
+        this.WebPanel1.SetElementClassName("card");
+        this.WebPanel1.SetAlign(pas["WEBLib.Controls"].TAlign.alRight);
+        this.WebPanel1.SetCaption("Scroll para visualizar");
+        this.WebPanel1.FElementBodyClassName = "card-body";
+        this.WebPanel1.SetElementFont(pas["WEBLib.Controls"].TElementFont.efCSS);
+        this.WebPanel1.FFont.FCharset = 1;
+        this.WebPanel1.FFont.SetColor(65793);
+        this.WebPanel1.FFont.SetHeight(-13);
+        this.WebPanel1.FFont.SetName("Tahoma");
+        this.WebPanel1.FFont.SetStyle(rtl.createSet(pas["WEBLib.Graphics"].TFontStyle.fsBold));
+        this.WebPanel1.SetParentFont(false);
+        this.WebPanel1.SetTabOrder(0);
       } finally {
+        this.WebPanel1.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
     rtl.addIntf(this,pas.System.IUnknown);
     var $r = this.$rtti;
+    $r.addField("WebPanel1",pas["WEBLib.ExtCtrls"].$rtti["TPanel"]);
     $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("CreateChart",1,[["ChartType",rtl.string],["Title",rtl.string],["Top",rtl.longint],["Left",rtl.longint],["Width",rtl.longint],["Height",rtl.longint],["ChartLabels",rtl.string,8]],rtl.longint);
     $r.addMethod("AddChartData",0,[["ChartNum",rtl.longint],["DataLabel",rtl.string],["DataColor",rtl.string],["Data",rtl.longint,8]]);
