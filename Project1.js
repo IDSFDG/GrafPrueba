@@ -57302,15 +57302,15 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
             options: {
               aspectRatio: Width / Height,
               layout: {
-                padding: {
-                  top: 0,
-                  right: 10,
-                  bottom: 5,
-                  left: 10
-                }
+               // padding: {
+               //   top: 0,
+               //   right: 10,
+              //    bottom: 5,
+              //    left: 10
+              //  }
               },
               plugins: {
-                zoom: zoomOptions,
+             //   zoom: zoomOptions,
                 title: {
                   text: Title,
                   color: ChartTitleColor,
@@ -57399,19 +57399,19 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       ChartTitleColor = "#77f";
       ChartLegendColor = "#0f0";
       const zoomOptions = {
-            pan: {
-              enabled: true,
-              mode: 'xy'
-            },
-            zoom: {
-              wheel: {
-                enabled: true
-              },
-              pinch: {
-                enabled: true
-              },
-              mode: 'xy'
-            }
+          //  pan: {
+          //    enabled: true,
+          //    mode: 'xy'
+          //  },
+          //  zoom: {
+          //    wheel: {
+          //      enabled: true
+          //    },
+          //    pinch: {
+          //      enabled: true
+          //    },
+           //   mode: 'xy'
+           // }
           };
       
             ChartRef = new Chart(ChartElem, {
