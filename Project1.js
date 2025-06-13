@@ -57219,24 +57219,24 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       var ChartCSV = null;
       var i = 0;
       var ChartRef = undefined;
-      ChartNum = this.CreateChart("bar","Grafica de Barra #1",10,10,400,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("bar","Diagnosticos",10,10,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"Series A",'["rgba(192,0,192,0.8)"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"Series B",'["rgba(0,192,192,0.8)"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"Series C",'["rgba(192,192,0,0.8)"]',[7,5,3,0,9,8,6]);
-      ChartNum = this.CreateChart("bar","Grafica de Barra #2",10,520,400,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("bar","Consultas Médicas",10,520,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"A",'["red"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"B",'["green"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"C",'["blue"]',[7,5,3,0,9,8,6]);
       this.AddChartData(ChartNum,"D",'["cyan"]',[5,3,0,9,8,6,7]);
       this.AddChartData(ChartNum,"E",'["purple"]',[3,0,9,8,6,7,5]);
-      ChartNum = this.CreateChart("line","Grafica de Linea #1",320,10,400,300,ChartLabels.slice(0));
+      ChartNum = this.CreateChart("line","Análisis Estudios",320,10,400,300,ChartLabels.slice(0));
       this.AddChartData(ChartNum,"A",'["#f77"]',[8,6,7,5,3,0,9]);
       this.AddChartData(ChartNum,"B",'["#7f7"]',[6,7,5,3,0,9,8]);
       this.AddChartData(ChartNum,"C",'["#77f"]',[7,5,3,0,9,8,6]);
       ChartCSV = pas.Classes.TStringList.$create("Create$1");
       ChartCSV.LoadFromFile("heartdata.csv");
       i = 0;
-      ChartNum = this.CreateChart("pie","Grafica de Pie #1",640,10,400,300,["Actividad","","Pasos","","Movimiento",""]);
+      ChartNum = this.CreateChart("pie","Diagnosticos Médicos",640,10,400,300,["Actividad","","Pasos","","Movimiento",""]);
       this.AddChartData(ChartNum,"A",'["rgba(255,128,128,1)","rgba(255,255,255,0.9)"]',[450,100]);
       this.AddChartData(ChartNum,"S",'["rgba(128,128,255,1)","rgba(255,255,255,0.9)"]',[9000,1000]);
       this.AddChartData(ChartNum,"M",'["rgba(128,255,128,1)","rgba(255,255,255,0.9)"]',[20,10]);
@@ -57248,7 +57248,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       //  ChartRef.data.datasets[1].borderColor = '#000';
       //  ChartRef.data.datasets[2].borderColor = '#000';
         ChartRef.update();
-      ChartNum = this.CreateChart("pie","Grafica de Pie #2",640,520,400,300,["Actividad","","Pasos","","Movimiento",""]);
+      ChartNum = this.CreateChart("pie","Estudios 2024",640,520,400,300,["Actividad","","Pasos","","Movimiento",""]);
       this.AddChartData(ChartNum,"A",'["rgba(36,108,244,1)","rgba(125,155,100,0.9)"]',[450,100]);
       this.AddChartData(ChartNum,"S",'["rgba(255,99,71,1)","rgba(140,120,90,0.9)"]',[9000,1000]);
       this.AddChartData(ChartNum,"M",'["rgba(128,255,128,1)","rgba(100,100,100,0.9)"]',[20,10]);
@@ -57391,6 +57391,7 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
       ChartName = "Chart" + pas.SysUtils.IntToStr(rtl.length(this.ChartArray));
       ChartName = "Prueba3Tipos";
       Title = "Grafica de 3 Tipos";
+      Title = "Comparativo Año vs Presupuesto";
       this.ChartArray = rtl.arraySetLength(this.ChartArray,undefined,rtl.length(this.ChartArray) + 1);
       DivChart = pas["WEBLib.WebCtrls"].THTMLDiv.$create("Create$1",[this]);
       DivChart.SetParent(this);
@@ -57433,12 +57434,14 @@ rtl.module("Unit1",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","
                       datasets: [{
                           type: 'line',
                           label: ' Line',
+                          label: ' Linea',
                           data: [50, 60, 70, 80],
                           backgroundColor: 'black',
                           borderColor: 'black'
                       }, {
                           type: 'bar',
                           label: 'Bar Chart',
+                          label: 'Barra',
                           data: [55, 65, 75, 85],
                           backgroundColor: 'red'
                       },
